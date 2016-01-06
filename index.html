@@ -20,7 +20,6 @@
             
             //display object
             var circle;
-            var accx,accy;
             
             //setup
             algo.bind('setup',function(){
@@ -31,16 +30,14 @@
             
             //frame
             algo.bind('frame',function(){
-                accx += 0.65;
-                accy += 0.65;
-                circle.x += accx;
-                circle.y += accy;
-                if(circle.x > window.innerWidth || circle.x < 0){
-                    accx *= -1.0;
-                }
-                if(circle.y > window.innerHeight || circle.y < 0){
-                    accy *= -1.0;
-                }
+                circle.x += 0.65;
+                circle.y += 0.65;
+                //if(circle.x > window.innerWidth || circle.x < 0){
+                //    accx *= -1.0;
+                //}
+                //if(circle.y > window.innerHeight || circle.y < 0){
+                //    accy *= -1.0;
+                //}
                 
             });
             
