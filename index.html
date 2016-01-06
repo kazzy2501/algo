@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+         <script type="text/javascript" src="js/algo.js"></script> 
+        <script type="text/javascript">
+            //initial
+            var param={
+                id:'canvas',
+                width: window.innerWidth,
+                height: window.innerHeight,
+                backgroundAuto: true
+            };
+            
+            //scene
+            var algo = new ALGO(param);
+            algo.background = 0xffffff;
+            
+            //display object
+            var circle;
+            var accx,accy;
+            
+            //setup
+            algo.bind('setup',function(){
+                circle = new ALGO.Circle(200,200,100);
+                circle.color = 0x00ffff;
+                algo.add(circle);
+            });
+            
+            //frame
+            algo.bind('frame',function(){
+                accx += 0.65;
+                accy += 0.65;
+                circle.x += accx;
+                circle.y += accy;
+                if(circle.x > window.innerWidth || circle.x < 0){
+                    accx *= -1.0;
+                }
+                if(circle.y > window.innerHeight || circle.y < 0){
+                    accy *= -1.0;
+                }
+                
+            });
+            
+            //resize
+            algo.bind('resize',function(){
+               var w = window.innerWidth;
+               var h = window.innerHeight;
+               algo.size(w,h);
+            });
+            
+        </script>
+    </body>
+</html>
